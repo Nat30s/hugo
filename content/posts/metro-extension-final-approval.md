@@ -5,6 +5,9 @@ pubDate: 2026-09-29
 author: The Storyteller
 category: Transport
 tags: [metro, transport, news]
+cover: https://picsum.photos/id/1015/1600/900
+toc: false
+updates: true
 ---
 
 The eastern extension has been moving through the approval process since September. Updates are listed newest first.

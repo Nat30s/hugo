@@ -10,6 +10,12 @@ locale = "en"
 [frontmatter]
   date = ["pubDate", ":default"]
 
+# Contents box (`toc: true`) lists ## and ### headings.
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel   = 3
+  ordered    = false
+
 [pagination]
   pagerSize = 9
 

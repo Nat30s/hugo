@@ -10,6 +10,17 @@
 .post-content .ub .d { display:block; font-size:12px; color:#9aa0a6; }
 .post-content .ub .x { display:block; font-size:15px; font-weight:500; line-height:1.35; color:#e6e6e6; }
 .post-content .ub a:hover .x { color:#fff; text-decoration:underline; }
+.post-content .toc { background:var(--color-bg-alt); border:1px solid var(--color-border); border-radius:8px; padding:4px 22px; margin:28px 0; font-family:var(--font-sans); }
+.post-content .toc summary { cursor:pointer; list-style:none; padding:14px 0; font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--color-text-muted); display:flex; justify-content:space-between; align-items:center; }
+.post-content .toc summary::-webkit-details-marker { display:none; }
+.post-content .toc summary::after { content:""; width:7px; height:7px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transform:rotate(45deg); transition:transform .2s; margin-right:4px; }
+.post-content .toc[open] summary::after { transform:rotate(-135deg); margin-top:4px; }
+.post-content .toc nav { padding:0 0 14px; }
+.post-content .toc ul { list-style:none; margin:0; padding:0; }
+.post-content .toc ul ul { padding-left:18px; margin-top:2px; }
+.post-content .toc li { margin:0; padding:5px 0; font-size:15px; line-height:1.4; }
+.post-content .toc a { border:0; background:none; padding:0; text-decoration:none; color:var(--color-text-secondary); }
+.post-content .toc a:hover { color:var(--color-text); text-decoration:underline; }
 </style>
 <article class="single-post">
   <!-- Article Header -->
@@ -68,8 +79,20 @@
       {{ $intro := index $parts 0 }}
       {{ $sections := "" }}
       {{ if gt (len $parts) 1 }}{{ $sections = printf "<h2%s" (delimit (after 1 $parts) "<h2") }}{{ end }}
+      {{/* Frontmatter switches: `toc: true` shows Contents (default off); `updates: false` hides the Updates box (default on). */}}
+      {{ $showToc := eq (printf "%v" .Params.toc) "true" }}
+      {{ $showUpdates := ne (printf "%v" .Params.updates) "false" }}
       {{ $intro | safeHTML }}
-      {{ with .Fragments.Headings }}{{ with (index . 0).Headings }}
+      {{ if $showToc }}
+        {{ $toc := .TableOfContents }}
+        {{ if in $toc "<li" }}
+        <details class="toc" open>
+          <summary>Contents</summary>
+          {{ $toc | safeHTML }}
+        </details>
+        {{ end }}
+      {{ end }}
+      {{ if $showUpdates }}{{ with .Fragments.Headings }}{{ with (index . 0).Headings }}
       {{ $dated := false }}
       {{ range . }}{{ if strings.Contains .Title " · " }}{{ $dated = true }}{{ end }}{{ end }}
       {{ if $dated }}
@@ -92,7 +115,7 @@
         </ol>
       </nav>
       {{ end }}
-      {{ end }}{{ end }}
+      {{ end }}{{ end }}{{ end }}
       {{ $sections | safeHTML }}
     </div>
   </div>
