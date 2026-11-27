@@ -1,0 +1,42 @@
+{{ define "main" }}
+{{/* Split rendered content: everything before the first <h2> is the intro, the rest is the sections. */}}
+{{ $parts := split .Content "<h2" }}
+{{ $intro := index $parts 0 }}
+{{ $sections := "" }}
+{{ if gt (len $parts) 1 }}
+  {{ $sections = printf "<h2%s" (delimit (after 1 $parts) "<h2") }}
+{{ end }}
+
+<article class="post">
+  <h1>{{ .Title }}</h1>
+  <div class="byline">
+    {{ with .Params.author }}By {{ . }} &nbsp;·&nbsp; {{ end }}{{ .Date.Format "Jan 2, 2006" }}{{ with .Params.category }} &nbsp;·&nbsp; Posted in {{ . }}{{ end }}
+  </div>
+
+  <div class="intro">{{ $intro | safeHTML }}</div>
+
+  {{/* Updates timeline: built from the "## date · headline" headings. */}}
+  {{ with .Fragments.Headings }}{{ with (index . 0).Headings }}
+  <nav class="ub" aria-label="Updates">
+    <p class="ub-t">Updates</p>
+    <ol>
+      {{ range . }}
+        {{ $bits := split .Title " · " }}
+        <li>
+          <a href="#{{ .ID }}">
+            {{ if gt (len $bits) 1 }}
+              <span class="d">{{ index $bits 0 }}</span>
+              <span class="x">{{ delimit (after 1 $bits) " · " }}</span>
+            {{ else }}
+              <span class="x">{{ .Title }}</span>
+            {{ end }}
+          </a>
+        </li>
+      {{ end }}
+    </ol>
+  </nav>
+  {{ end }}{{ end }}
+
+  <div class="sec">{{ $sections | safeHTML }}</div>
+</article>
+{{ end }}

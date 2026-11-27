@@ -1,0 +1,11 @@
+# Change these two values. The workflow overrides baseURL automatically on GitHub Pages.
+baseURL = "https://example.github.io/my-site/"
+title = "My News Site"
+locale = "en"
+
+# Posts use `pubDate` in frontmatter as their date.
+[frontmatter]
+  date = ["pubDate", ":default"]
+
+# Not using tag/category archive pages, so no templates are needed for them.
+disableKinds = ["taxonomy", "term"]
