@@ -7,5 +7,4 @@ locale = "en"
 [frontmatter]
   date = ["pubDate", ":default"]
 
-# Not using tag/category archive pages, so no templates are needed for them.
-disableKinds = ["taxonomy", "term"]
+theme = "blank-magazine"
