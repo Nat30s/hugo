@@ -1,0 +1,42 @@
+# ---- Change these ----
+baseURL = "https://example.github.io/my-site/"   # GitHub Pages build overrides this automatically
+title   = "My News Site"
+
+# ---- Leave the rest ----
+theme  = "blank-magazine"
+locale = "en"
+
+# Posts use `pubDate` in frontmatter as their date.
+[frontmatter]
+  date = ["pubDate", ":default"]
+
+[pagination]
+  pagerSize = 9
+
+[params]
+  description  = "News and updates"
+  author       = "My News Site"      # shown in the footer
+  mainSections = ["posts"]
+
+[taxonomies]
+  tag      = "tags"
+  category = "categories"
+
+# Needed for the search box.
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# pageRef (not url) keeps links correct on a GitHub Pages sub-path like /my-site/
+[menu]
+  [[menu.main]]
+    name    = "Home"
+    pageRef = "/"
+    weight  = 1
+  [[menu.main]]
+    name    = "Posts"
+    pageRef = "/posts"
+    weight  = 2
+  [[menu.main]]
+    name    = "Tags"
+    pageRef = "/tags"
+    weight  = 3
