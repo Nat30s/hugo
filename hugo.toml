@@ -8,3 +8,21 @@ locale = "en"
   date = ["pubDate", ":default"]
 
 theme = "blank-magazine"
+
+
+[pagination]
+  pagerSize = 9
+
+[params]
+  author = "Your Name"
+  authorBio = "writer / reader / walker"
+  slogan = "A quiet place for words worth re-reading."
+  email = "hello@example.com"
+  mainSections = ["posts"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
