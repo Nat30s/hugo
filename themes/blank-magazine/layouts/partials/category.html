@@ -1,3 +1,0 @@
-{{- $c := "" -}}
-{{- with .Params.category -}}{{- $c = . -}}{{- else -}}{{- with .Params.categories -}}{{- $c = index . 0 -}}{{- end -}}{{- end -}}
-{{- return $c -}}

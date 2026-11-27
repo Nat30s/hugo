@@ -9,7 +9,7 @@
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-{{ with .Params.cover }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+{{ with .Params.cover }}<meta property="og:image" content="{{ partial "cover-url-abs.html" . }}">{{ end }}
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">

@@ -1,7 +1,7 @@
 <article class="post-card{{ if .Params.cover }} has-cover{{ end }}">
   {{ if .Params.cover }}
   <a href="{{ .Permalink }}" class="post-card-cover">
-    <img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy">
+    <img src="{{ partial "cover-url.html" .Params.cover }}" alt="{{ .Title }}" loading="lazy">
   </a>
   {{ end }}
   <div class="post-card-body">
