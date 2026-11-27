@@ -18,9 +18,11 @@ locale = "en"
   author       = "My News Site"      # shown in the footer
   mainSections = ["posts"]
 
+# Your frontmatter key is `category` (singular), so that is the taxonomy name.
+# Archive pages: /category/<name>/ and the index /category/
 [taxonomies]
   tag      = "tags"
-  category = "categories"
+  category = "category"
 
 # Needed for the search box.
 [outputs]
@@ -37,6 +39,10 @@ locale = "en"
     pageRef = "/posts"
     weight  = 2
   [[menu.main]]
+    name    = "Categories"
+    pageRef = "/category"
+    weight  = 3
+  [[menu.main]]
     name    = "Tags"
     pageRef = "/tags"
-    weight  = 3
+    weight  = 4

@@ -20,7 +20,8 @@ Create `content/posts/anything.md`:
     Text...
 
 Each `## date · headline` becomes an entry in the Updates box (newest first, as written).
-A post without dated headings simply has no Updates box. Add `featured: true` to pin a post on the home page.
+A post without dated headings simply has no Updates box.
+The `category` value creates an archive page automatically: `/category/<name>/` (index at `/category/`). Add `featured: true` to pin a post on the home page.
 
 ## Settings
 Edit `hugo.toml`: `title`, `author` (footer) and `description`.

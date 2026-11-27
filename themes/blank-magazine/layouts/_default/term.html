@@ -1,12 +1,12 @@
 {{ define "main" }}
-{{ $isCat := eq .Data.Plural "categories" }}
+{{ $isCat := eq .Data.Plural "category" }}
 <section class="page-header">
   <div class="container">
     <p class="page-eyebrow">{{ if $isCat }}CATEGORY{{ else }}TAG{{ end }}</p>
     <h1 class="page-title">{{ if not $isCat }}#{{ end }}{{ .Title }}</h1>
-    <p class="page-desc">{{ len .Pages }} posts</p>
+    <p class="page-desc">{{ len .Pages }} {{ if eq (len .Pages) 1 }}post{{ else }}posts{{ end }}</p>
     <div class="page-divider"></div>
-    <p style="margin-top:16px;"><a href="{{ if $isCat }}{{ "categories/" | relURL }}{{ else }}{{ "tags/" | relURL }}{{ end }}" style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-text-muted);">← {{ if $isCat }}All categories{{ else }}All tags{{ end }}</a></p>
+    <p style="margin-top:16px;"><a href="{{ if $isCat }}{{ "category/" | relURL }}{{ else }}{{ "tags/" | relURL }}{{ end }}" style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-text-muted);">← {{ if $isCat }}All categories{{ else }}All tags{{ end }}</a></p>
   </div>
 </section>
 

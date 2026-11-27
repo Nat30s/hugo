@@ -16,7 +16,7 @@
   <header class="single-header">
     <p class="single-date">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
-      {{ with partial "category.html" . }}<span class="meta-sep">·</span> {{ . | upper }}{{ end }}
+      {{ with partial "category.html" . }}<span class="meta-sep">·</span> <a href="{{ "category/" | relURL }}{{ . | urlize }}/">{{ . | upper }}</a>{{ end }}
       {{ with .Params.author }}<span class="meta-sep">·</span> BY {{ . | upper }}{{ end }}
     </p>
     <h1 class="single-title">{{ .Title }}</h1>

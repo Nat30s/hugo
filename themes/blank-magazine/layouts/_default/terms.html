@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $isCat := eq .Data.Plural "categories" }}
+{{ $isCat := eq .Data.Plural "category" }}
 {{ if $isCat }}
 <section class="page-header">
   <div class="container">
@@ -37,7 +37,7 @@
       <div class="tag-detail-group">
         <h3 class="tag-detail-title">
           <a href="{{ .Page.Permalink }}">{{ if not $isCat }}#{{ end }}{{ .Page.Title }}</a>
-          <span class="tag-detail-count">{{ .Count }} posts</span>
+          <span class="tag-detail-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
         </h3>
         <div class="tag-detail-posts">
           {{ range first 5 .Pages }}
