@@ -51,7 +51,7 @@
   {{ if .Params.cover }}
   <div class="single-cover">
     <div class="container">
-      <img src="{{ partial "cover-url.html" .Params.cover }}" alt="{{ .Title }}">
+      <img src="{{ .Params.cover }}" alt="{{ .Title }}">
     </div>
   </div>
   {{ end }}
@@ -160,7 +160,7 @@
         {{ range $related }}
         <a href="{{ .Permalink }}" class="related-card">
           {{ if .Params.cover }}
-          <div class="related-cover"><img src="{{ partial "cover-url.html" .Params.cover }}" alt="{{ .Title }}" loading="lazy"></div>
+          <div class="related-cover"><img src="{{ .Params.cover }}" alt="{{ .Title }}" loading="lazy"></div>
           {{ end }}
           <div class="related-info">
             {{ with partial "category.html" . }}<span class="related-cat">{{ . | upper }}</span>{{ end }}
