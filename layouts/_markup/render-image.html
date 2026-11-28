@@ -1,5 +1,0 @@
-{{- /* Markdown images: "/images/x.jpg" gets the site sub-path prefix; full https:// links are unchanged. */ -}}
-{{- $src := .Destination -}}
-{{- $u := urls.Parse $src -}}
-{{- if and (hasPrefix $src "/") (not $u.Host) -}}{{- $src = strings.TrimPrefix "/" $src | relURL -}}{{- end -}}
-<img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">

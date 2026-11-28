@@ -1,4 +1,0 @@
-{{- /* Resolve an image path from frontmatter. "/images/x.jpg" works on a GitHub Pages sub-path; full https:// links are left as they are. */ -}}
-{{- $u := . | string -}}
-{{- if and (hasPrefix $u "/") (not (hasPrefix $u "//")) }}{{ $u = strings.TrimPrefix "/" $u }}{{ end -}}
-{{- return ($u | relURL) -}}

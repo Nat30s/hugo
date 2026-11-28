@@ -1,4 +1,0 @@
-{{- /* Same as cover-url.html but returns a full URL (for og:image). */ -}}
-{{- $u := . | string -}}
-{{- if and (hasPrefix $u "/") (not (hasPrefix $u "//")) }}{{ $u = strings.TrimPrefix "/" $u }}{{ end -}}
-{{- return ($u | absURL) -}}
