@@ -31,6 +31,6 @@ Residents can submit objections until the end of the month.
 
 The planning body submitted the revised route for the eastern extension.
 
-
+![alt text](/images/wall.jpg).
 
 [Source](https://example.com/metro-route)
