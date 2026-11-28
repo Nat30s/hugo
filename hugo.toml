@@ -1,0 +1,54 @@
+# ---- Change these ----
+baseURL = "https://example.github.io/my-site/"   # GitHub Pages build overrides this automatically
+title   = "My News Site"
+
+# ---- Leave the rest ----
+theme  = "blank-magazine"
+locale = "en"
+
+# Posts use `pubDate` in frontmatter as their date.
+[frontmatter]
+  date = ["pubDate", ":default"]
+
+# Contents box (`toc: true`) lists ## and ### headings.
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel   = 3
+  ordered    = false
+
+[pagination]
+  pagerSize = 9
+
+[params]
+  description  = "News and updates"
+  author       = "My News Site"      # shown in the footer
+  mainSections = ["posts"]
+
+# Your frontmatter key is `category` (singular), so that is the taxonomy name.
+# Archive pages: /category/<name>/ and the index /category/
+[taxonomies]
+  tag      = "tags"
+  category = "category"
+
+# Needed for the search box.
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# pageRef (not url) keeps links correct on a GitHub Pages sub-path like /my-site/
+[menu]
+  [[menu.main]]
+    name    = "Home"
+    pageRef = "/"
+    weight  = 1
+  [[menu.main]]
+    name    = "Posts"
+    pageRef = "/posts"
+    weight  = 2
+  [[menu.main]]
+    name    = "Categories"
+    pageRef = "/category"
+    weight  = 3
+  [[menu.main]]
+    name    = "Tags"
+    pageRef = "/tags"
+    weight  = 4
